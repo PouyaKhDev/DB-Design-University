@@ -1,0 +1,66 @@
+# Git
+.git
+.gitignore
+
+# Python & Django Specific
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Database files (SQLite)
+*.sqlite3
+db.sqlite3
+
+# User-generated media (Never bake this into the image)
+media/
+
+# Collected static files (Generated at runtime/build time)
+staticfiles/
+
+# Python packaging / distribution
+*.egg-info/
+dist/
+build/
+
+# Environment & Secrets
+.env
+.env.local
+.env.*
+*.pem
+*.key
+
+# Testing & Linting Caches
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.tox/
+.nox/
+
+# IDEs, Editors & OS Files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Docker Files
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentation & Non-essential Files
+README.md
+LICENSE
+CHANGELOG.md
+docs/

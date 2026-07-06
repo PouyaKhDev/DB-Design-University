@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: film_festival_app
+    volumes:
+      - ./festival_app:/app
+      - ./entrypoint.sh:/app/entrypoint.sh
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env

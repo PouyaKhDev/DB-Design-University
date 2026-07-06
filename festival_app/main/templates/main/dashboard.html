@@ -1,0 +1,70 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Festival DB Dashboard</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script defer src="{% static 'script.js' %}"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <header class="main-header">
+        <h1>🎬 Film Festival Database Queries</h1>
+        <p>Click on a query to expand, enter parameters if needed, and view results.</p>
+      </header>
+
+      <div class="query-list">
+        {% for key, info in queries.items %}
+        <div class="query-card" id="card-{{ key }}">
+          <div class="query-header" onclick="toggleCard('{{ key }}')">
+            <div class="header-content">
+              <h3>{{ info.title }}</h3>
+              <p class="short-desc">{{ info.description|truncatechars:60 }}</p>
+            </div>
+            <div class="arrow">▼</div>
+          </div>
+
+          <div class="query-body">
+            <p class="full-desc">{{ info.description }}</p>
+
+            {% if info.params %}
+            <form class="query-form" onsubmit="handleExecute(event, '{{ key }}')">
+              {% for param in info.params %}
+              <div class="input-group">
+                <label for="{{ key }}-{{ param.name }}">{{ param.label }}</label>
+                <input
+                  type="{{ param.type }}"
+                  id="{{ key }}-{{ param.name }}"
+                  name="{{ param.name }}"
+                  required
+                />
+              </div>
+              {% endfor %}
+              <button type="submit" class="btn-execute">Execute Query</button>
+            </form>
+            {% else %}
+            <button
+              class="btn-execute no-param-btn"
+              onclick="handleExecute(event, '{{ key }}', true)"
+            >
+              Execute Query
+            </button>
+            {% endif %}
+
+            <div class="result-area" id="result-{{ key }}">
+              <!-- Results will be injected here -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

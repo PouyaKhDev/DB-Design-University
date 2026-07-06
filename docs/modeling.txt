@@ -1,0 +1,73 @@
+FILM FESTIVAL MANAGEMENT SYSTEM - EER/ER MODEL DOCUMENTATION
+
+------------------------------------------------------------------------
+1. ENTITIES & ATTRIBUTES
+------------------------------------------------------------------------
+
+[Festival]
+  - PK: festival_id
+  - Attributes: title, date, location
+
+[Category]
+  - PK: category_id
+  - Attributes: name, description
+
+[Person] (Base Entity / Supertype)
+  - PK: person_id
+  - Attributes: first_name, last_name, birth_date, nationality, biography
+
+[Venue]
+  - PK: venue_id
+  - Attributes: name, address, capacity
+  - FK: festival_id
+
+[Film]
+  - PK: film_id
+  - Attributes: title, release_year, duration_minutes, country
+  - FK: category_id, festival_id
+
+------------------------------------------------------------------------
+2. Subtypes of Person
+------------------------------------------------------------------------
+
+[Staff] (Subtype: Organizer Role)
+  - PK: staff_id
+  - FK: person_id, festival_id
+  - Attributes: position, department
+
+[Judge] (Subtype: Evaluator Role)
+  - PK: judge_id
+  - FK: person_id, festival_id
+  - Attributes: expertise, certification_level
+
+------------------------------------------------------------------------
+3. RELATIONSHIPS & ASSOCIATIVE ENTITIES
+------------------------------------------------------------------------
+
+[FestivalCategory] (Resolves M:N between Festival and Category)
+  - PK: festival_category_id
+  - FK: festival_id, category_id
+
+[FilmPerson] (Resolves M:N between Film and Person)
+  - PK: film_person_id
+  - FK: film_id, person_id
+  - Attributes: role_type (director, actor)
+
+[FilmJudge] (Resolves M:N between Film and Judge - Assignment)
+  - PK: film_judge_id
+  - FK: film_id, judge_id
+
+[Screening] (Ternary Relationship: Film, Venue, Staff)
+  - PK: screening_id
+  - FK: film_id, venue_id, organizer_id (Staff)
+  - Attributes: screening_datetime, duration_minutes
+
+[Evaluation] (M:N Relationship between Film and Judge with Attributes)
+  - PK: evaluation_id
+  - FK: film_id, judge_id
+  - Attributes: criterion, score, comments
+
+[Award] (M:N Relationship between Film and Festival)
+  - PK: award_id
+  - FK: film_id, festival_id
+  - Attributes: award_name, award_category, award_date, prize_amount, description
