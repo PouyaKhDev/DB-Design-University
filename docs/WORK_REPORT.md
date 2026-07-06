@@ -1,5 +1,9 @@
 # Work Report & Design Decisions
 
+## Online Demo
+
+https://film-festival.runflare.run/
+
 ## 1. Introduction
 
 The goal of this project was to design and implement a database for a Film Festival Management System. The system needs to handle festivals, categories, films, people (actors/directors), staff, judges, screenings, and evaluations. I also built a simple web GUI to interact with the database and visualize the results of various SQL queries.

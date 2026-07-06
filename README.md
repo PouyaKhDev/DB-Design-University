@@ -5,6 +5,10 @@ This is my final project for the Database Design course. It's a web-based manage
 The Django ORM is bypassed and Django is only used for routing and serving the GUI.
 All Database commands are written in raw SQL.
 
+## Online Demo
+
+https://film-festival.runflare.run/
+
 ## Tech Stack
 
 - **Backend:** Python, Django
