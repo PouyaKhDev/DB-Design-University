@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from django.http import JsonResponse, HttpResponseBadRequest
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
 import json
+
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from core import db_operations
 
@@ -115,6 +116,7 @@ QUERY_CONFIG = {
 }
 
 
+@ensure_csrf_cookie
 def dashboard(request):
     """Renders the main dashboard page."""
     context = {
