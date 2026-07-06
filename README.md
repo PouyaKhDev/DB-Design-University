@@ -43,7 +43,7 @@ The project is fully containerized using Docker and Docker Compose. You do not n
 2. **Open your terminal** and navigate to the root directory of the project (where the `docker-compose.yml` file is located).
 3. **Build and start the containers** by running:
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
 4. **Access the Application:** Open your web browser and go to:
    ```text
@@ -52,7 +52,7 @@ The project is fully containerized using Docker and Docker Compose. You do not n
 5. **Interact with the Dashboard:** Click on any of the 20 queries in the list. If a query requires a parameter (like a Film ID or Date), enter it and click "Execute Query" to see the results.
 6. **To Stop the Server:** Press `Ctrl + C` in your terminal, or run:
    ```bash
-   docker-compose down
+   docker compose down
    ```
 
 ## AI Usage
