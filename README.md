@@ -61,7 +61,7 @@ Artificial Intelligence (AI) tools were utilized during the development of this 
 
 ## .env File
 
-This is file is present in the project output because this is a simple university project
+This file is present in the project output because this is a simple university project
 and the professor should have easy access to it without dealing with configurations.
 
 ## Project Structure (Important Files)
